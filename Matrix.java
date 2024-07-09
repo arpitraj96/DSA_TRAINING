@@ -67,4 +67,21 @@ public class Matrix {
             System.out.println("(" + diagonalElements.toString().trim() + ")");
         }
     }
+    static void add(int[][]arr1, int[][]arr2){
+        int r1 = arr1.length;
+        int c1 = arr1[r1-1].length;
+        int r2 = arr2.length;
+        int c2 = arr2[r2-1].length;
+        if(r1!=r2 || c1!=c2){
+            System.out.println("Wrong Input!, Addition is not possible");
+            return;
+        }
+        int[][] sum = new int[r1][c2];
+        for(int i=0; i<r1; i++){
+            for(int j=0; j<c2; j++){
+                sum[i][j] = arr1[i][j] + arr2[i][j];
+            }
+        }
+        System.out.println("Addition of the Matrix is: "+Arrays.deepToString(sum));
+    }
 }
