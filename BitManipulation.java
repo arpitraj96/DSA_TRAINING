@@ -1,6 +1,6 @@
 import java.util.Scanner;
-
-public class BitManipulation {
+// Bit manipulation is the act of algorithmically manipulating bits or other pieces of data shorter than a word.
+public class BitManipulation { 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         // GET
