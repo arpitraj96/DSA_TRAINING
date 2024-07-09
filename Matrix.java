@@ -36,6 +36,7 @@ public class Matrix {
         }
         diagonalElements(matrix);
         allDiagonalElements(matrix, row, col);
+        add(matrix, matrix);
         sc.close();
     }
     static void diagonalElements(int[][] arr){
