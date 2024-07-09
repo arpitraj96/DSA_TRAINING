@@ -1,0 +1,32 @@
+Defined as a function of the input size n using Big-O notation. n indicates the input size, while O is the worst-case scenario growth rate function.
+
+Best Case denotes as Ω(Omega)
+Average Case denotes as θ(Theta)
+Worst Case denotes as O(Big-O)
+
+Generally we only care about Worst Case. 
+
+
+The Time Complexity can be in form of cubic,  logarithmic, exponential, factorial, constant function
+
+https://adrianmejia.com/images/time-complexity-examples.png
+
+
+Constant Time
+def add(x, y)
+    a = x;              --> O(1) Constant Time
+    b = y;          
+    return a+b
+
+Linear Time
+for i in(1, n+1):         --> O(n)
+    print(i)             
+
+Quadratic Time
+for i in(1, n+1):
+    for j in(1, n+1):      --> O(n^2)
+        print(j)             
+    print()
+
+
+ 
