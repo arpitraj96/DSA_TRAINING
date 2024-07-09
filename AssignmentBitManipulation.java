@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class AssingmentBitManipulation {
+public class AssignmentBitManipulation {
     // Kth bit set or not
     public static void kthBitSetUnset(int n, int k) {
         int bitMask = 1<<k;
