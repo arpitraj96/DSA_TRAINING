@@ -23,7 +23,8 @@ public class StringsJava {
         // }
         // str2.concat(str1);
         // System.out.println(str2);
-        System.out.println(equalString(str1, str2));
+        // System.out.println(equalString(str1, str2));
+        System.out.println(isValid("{}{(])}"));
     }
     static boolean equalString(String str1, String str2){
         int len1 = str1.length();
@@ -33,6 +34,39 @@ public class StringsJava {
             return str1.equalsIgnoreCase(str2);
         }
         return false;
+    }
+    static boolean isValid(String s) {
+        int openParen = 0, openBracket = 0, openBrace = 0;
+        
+        for (char c : s.toCharArray()) {
+            switch (c) {
+                case '(':
+                    openParen++;
+                    break;
+                case ')':
+                    if (openParen == 0) return false;
+                    openParen--;
+                    break;
+                case '[':
+                    openBracket++;
+                    break;
+                case ']':
+                    if (openBracket == 0) return false;
+                    openBracket--;
+                    break;
+                case '{':
+                    openBrace++;
+                    break;
+                case '}':
+                    if (openBrace == 0) return false;
+                    openBrace--;
+                    break;
+                default:
+                    return false;
+            }
+        }
+        
+        return openParen == 0 && openBracket == 0 && openBrace == 0;
     }
 }
 /*
@@ -69,4 +103,4 @@ Less Efficient
 Low(Due to Synchronization)
 This is used when Thread safety is required.
 
- */
+*/
