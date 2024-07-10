@@ -1,7 +1,7 @@
 public class StringsJava {
     public static void main(String[] args) {
-        String str1 = "Hello World!";     //String Literals
-        String str2 = new String("hello world!");    //String Object
+        // String str1 = "Hello World!";     //String Literals
+        // String str2 = new String("hello world!");    //String Object
         // System.out.println(str1+str2);
 
         // System.out.println("String Length: "+str1.length());
