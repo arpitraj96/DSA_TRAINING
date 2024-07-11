@@ -1,6 +1,7 @@
 public class Question {
     public static void main(String[] args) {
-        System.out.println(asciiChange("interviews", 10));
+        // System.out.println(asciiChange("interviews", 10));
+        System.out.println(teamDivision(7));
     }
     static String asciiChange(String str, int num) {
         str = str.toLowerCase();
@@ -15,5 +16,25 @@ public class Question {
             }
         }
         return ans.toString();
+    }
+    static int teamDivision(int num){
+        if(num%2==0){
+            int tEven=0;
+            int tOdd = 0;
+            for(int i=1; i<=num; i++){
+                if(num%i==0){
+                    if(i%2==0)
+                        tEven++;
+                    else
+                        tOdd++;
+                }
+            }
+            if(tEven==tOdd)
+                return 1;
+            else
+                return 0;
+        }else{
+            return 0;
+        }
     }
 }
