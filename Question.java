@@ -2,6 +2,15 @@ public class Question {
     public static void main(String[] args) {
         // System.out.println(asciiChange("interviews", 10));
         System.out.println(teamDivision(7));
+        // Given two arrays of integers, find which elements in the second array are missing from the first array.
+        int[] arrA = {7, 2, 5, 3, 5, 3};
+        int[] arrB = {7, 2, 5, 4, 6, 3, 5, 3};
+        System.out.println(checkMissingNumber(arrA, arrB));
+    }
+    static int[] checkMissingNumber(int[] arrA, int[] arrB){
+        // To be done
+        int[] arr = {1,2};
+        return arr;
     }
     static String asciiChange(String str, int num) {
         str = str.toLowerCase();
