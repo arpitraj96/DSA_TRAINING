@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Question {
     public static void main(String[] args) {
         // System.out.println(asciiChange("interviews", 10));
@@ -6,6 +8,8 @@ public class Question {
         int[] arrA = {7, 2, 5, 3, 5, 3};
         int[] arrB = {7, 2, 5, 4, 6, 3, 5, 3};
         System.out.println(checkMissingNumber(arrA, arrB));
+        int[] array = {4, 2, 5, 1, 3};
+        bubbleSort(array);
     }
     static int[] checkMissingNumber(int[] arrA, int[] arrB){
         // To be done
@@ -45,5 +49,20 @@ public class Question {
         }else{
             return 0;
         }
+    }
+    static void bubbleSort(int[] arr){
+        int numSwaps = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i+1; j < arr.length; j++) {
+                if(arr[i]>arr[j]){
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                    numSwaps++;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+        System.out.println("The number of swaps done to sort the array : "+numSwaps);
     }
 }
