@@ -1,10 +1,10 @@
 import java.util.Scanner;
 class LinkedList {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         Node head = null;
         while (true) {
-            System.out.println("Select, What you want\n1. InsertAtBeginning\n2. InsertAtEnd\n3. Display\n4. DeleteAtBeginning\n5. DeleteAtEnd\n0. Exit\n");
-            Scanner sc = new Scanner(System.in);
+            System.out.println("\nSelect, What you want\n1. InsertAtBeginning\n2. InsertAtEnd\n3. Display\n4. DeleteAtBeginning\n5. DeleteAtEnd\n6. InsertAtPosition\n7. DeleteAtPosition\n0. Exit\n");
             int choice = sc.nextInt();
             if(choice==1){
                 System.out.print("Enter a number into the list: ");
@@ -20,6 +20,16 @@ class LinkedList {
                 head = insertAtEnd(num, head);
             }else if(choice==5){
                 head = deleteAtEnd(head);
+            }else if(choice==6){
+                System.out.print("Enter a number into the list: ");
+                int num = sc.nextInt();
+                System.out.print("Enter Position: ");
+                int pos = sc.nextInt();
+                head = insertAtPos(num, pos, head);
+            }else if(choice==7){
+                System.out.print("Enter the position: ");
+                int pos = sc.nextInt();
+                head = deleteAtPos(pos, head);
             }else if(choice==0){
                 display(head);
                 System.out.println("Terminating.........");
@@ -29,6 +39,7 @@ class LinkedList {
             }
             // sc.close();
         }
+        sc.close();
     }
     static Node insertAtBeg(int num, Node head){
         Node newNode = new Node(num);
@@ -76,6 +87,52 @@ class LinkedList {
             }
             System.out.println("The deleted element is: "+last.data);
             last2.next = null;
+        }
+        return head;
+    }
+    static Node insertAtPos(int num, int pos, Node head){
+        Node newNode = new Node(num);
+        if(pos<=0){
+            System.out.println("Invalid Position");
+        }else if(pos==1 || head==null){
+            newNode.next = head;
+            head = newNode;
+        }else{
+            Node temp = head;
+            for(int i=1; i<=pos-2; i++){
+                temp = temp.next;
+                if(temp==null){
+                    System.out.println("Position beyond the list");
+                    return head;
+                }
+            }
+            newNode.next = temp.next;
+            temp.next = newNode;
+        }
+        return head;
+    }
+    static Node deleteAtPos(int pos, Node head){
+        if(head==null){
+            System.out.println("List is Empty");
+        }else if(pos<=0){
+            System.out.println("Invalid Position");
+        }else if(pos==1){
+            System.out.println("The deleted element is: "+head.data);
+            head = head.next;
+        }else{
+            Node last = head;
+            Node last2 = head;
+            for(int i=1; i<=pos-1; i++){
+                last2 = last;
+                last = last.next;
+                if(last==null){
+                    System.out.println("Position beyond the list");
+                    return head;
+                }
+            }
+            last2.next = last.next;
+            System.out.println("The deleted element is: "+last.data);
+            last.next = null;
         }
         return head;
     }
