@@ -52,7 +52,6 @@ public class DoublyLinkedList {
     static Node insertAtEnd(int num, Node head){
         Node newNode = new Node(num);
         if(head==null){
-            newNode.next = head;
             head = newNode;
         }else{
             Node temp = head;
@@ -60,6 +59,7 @@ public class DoublyLinkedList {
                 temp = temp.next;
             }
             temp.next = newNode;
+            newNode.prev = temp;
         }
         return head;
     }
@@ -71,6 +71,10 @@ public class DoublyLinkedList {
             Node temp = head;
             head = head.next;
             temp.next = null;
+
+            if(head!=null){
+                head.prev = null;
+            }
         }
         return head;
     }
@@ -82,13 +86,13 @@ public class DoublyLinkedList {
             head = null;
         }else{
             Node last = head;
-            Node last2 = head;
             while (last.next!=null) {
-                last2 = last;
                 last = last.next;
             }
             System.out.println("The deleted element is: "+last.data);
-            last2.next = null;
+            // Node prev = last.prev;
+            // prev.next = null;
+            last.prev.next = null;
         }
         return head;
     }
@@ -96,8 +100,14 @@ public class DoublyLinkedList {
         Node newNode = new Node(num);
         if(pos<=0){
             System.out.println("Invalid Position");
-        }else if(pos==1 || head==null){
+        }else if(head==null){
+            newNode.next = null;
+            newNode.prev = null;
+            head = newNode;
+        }else if(pos==1){
             newNode.next = head;
+            newNode.prev = null;
+            head.prev = newNode;
             head = newNode;
         }else{
             Node temp = head;
@@ -108,8 +118,15 @@ public class DoublyLinkedList {
                     return head;
                 }
             }
-            newNode.next = temp.next;
-            temp.next = newNode;
+            newNode.prev = temp;
+            if(temp.next!=null){
+                newNode.next = temp.next;
+                temp.next.prev = newNode;
+                temp.next = newNode;
+            }else{
+                temp.next = newNode;
+                newNode.next = null;
+            }
         }
         return head;
     }
@@ -120,21 +137,31 @@ public class DoublyLinkedList {
             System.out.println("Invalid Position");
         }else if(pos==1){
             System.out.println("The deleted element is: "+head.data);
-            head = head.next;
+            if(head.next!=null){
+                head = head.next;
+                head.prev = null;
+            }else{
+                head = null;
+            }
         }else{
             Node last = head;
-            Node last2 = head;
             for(int i=1; i<=pos-1; i++){
-                last2 = last;
                 last = last.next;
                 if(last==null){
                     System.out.println("Position beyond the list");
                     return head;
                 }
             }
-            last2.next = last.next;
             System.out.println("The deleted element is: "+last.data);
-            last.next = null;
+            last.prev.next= last.next;
+            if(last.next!=null){
+                last.next.prev = last.prev;
+                last.next = null;
+                last.prev = null; 
+            }else{
+                last.next = null;
+                last.prev = null;
+            }
         }
         return head;
     }
