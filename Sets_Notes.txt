@@ -1,0 +1,4 @@
+Set is an Interface
+It is created by implementing Hash Set, Linked Hash Set, and Tree Set.
+HashSet -> Unordered
+LinkedHashSet -> Ordered
