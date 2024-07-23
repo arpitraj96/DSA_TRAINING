@@ -2,3 +2,10 @@ Set is an Interface
 It is created by implementing Hash Set, Linked Hash Set, and Tree Set.
 HashSet -> Unordered
 LinkedHashSet -> Ordered
+
+
+Map implemets HashMap, HashTable, and LinkedHashMap
+Map extends Sorted TreeMap
+HashMap -> Unordered
+LinkedHashMap -> Ordered
+Tree -> Sorted
