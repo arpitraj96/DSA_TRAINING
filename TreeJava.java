@@ -54,35 +54,35 @@ class BinaryTree {
         }
     }
 
-    // Method to print the binary tree using level order traversal (BFS)
+    // Method to print the binary tree with dashes, arrows, and spaces
     public void printTree() {
         if (this.root == null) {
             System.out.println("Tree is empty.");
             return;
         }
 
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(this.root);
+        printTreeRecursive(this.root, "");
+    }
 
-        while (!queue.isEmpty()) {
-            int levelSize = queue.size();
-            for (int i = 0; i < levelSize; i++) {
-                TreeNode currentNode = queue.poll();
-                System.out.print(currentNode.data + " ");
-
-                if (currentNode.left != null) {
-                    queue.offer(currentNode.left);
-                }
-                if (currentNode.right != null) {
-                    queue.offer(currentNode.right);
-                }
-            }
-            System.out.println(); // Move to the next level
+    // Recursive method to print the binary tree with dashes, arrows, and spaces
+    private void printTreeRecursive(TreeNode node, String indent) {
+        if (node == null) {
+            System.out.println(indent + "- null");
+            return;
         }
+
+        // Print current node
+        System.out.println(indent + "- " + node.data);
+
+        // Recursive call for right subtree
+        printTreeRecursive(node.right, indent + "   |");
+
+        // Recursive call for left subtree
+        printTreeRecursive(node.left, indent + "   ");
     }
 }
 
-public class TreeJava {
+public class Main {
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
 
