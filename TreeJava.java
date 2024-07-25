@@ -1,5 +1,4 @@
-import java.util.*;
-
+// import java.util.*;
 class TreeNode {
     int data;
     TreeNode left;
@@ -11,7 +10,6 @@ class TreeNode {
         this.right = null;
     }
 }
-
 class BinaryTree {
     private TreeNode root;
 
@@ -19,12 +17,9 @@ class BinaryTree {
         this.root = null;
     }
 
-    // Method to insert a node in the binary tree
     public void insert(int data) {
         this.root = insertRecursive(this.root, data);
     }
-
-    // Recursive method to insert a node in the binary tree
     private TreeNode insertRecursive(TreeNode node, int data) {
         if (node == null) {
             node = new TreeNode(data);
@@ -37,13 +32,9 @@ class BinaryTree {
         }
         return node;
     }
-
-    // Method to calculate the height of the binary tree
     public int height() {
         return calculateHeight(this.root);
     }
-
-    // Recursive method to calculate the height of the binary tree
     private int calculateHeight(TreeNode node) {
         if (node == null) {
             return 0;
@@ -53,8 +44,6 @@ class BinaryTree {
             return Math.max(leftHeight, rightHeight) + 1;
         }
     }
-
-    // Method to print the binary tree with dashes, arrows, and spaces
     public void printTree() {
         if (this.root == null) {
             System.out.println("Tree is empty.");
@@ -63,30 +52,23 @@ class BinaryTree {
 
         printTreeRecursive(this.root, "");
     }
-
-    // Recursive method to print the binary tree with dashes, arrows, and spaces
     private void printTreeRecursive(TreeNode node, String indent) {
         if (node == null) {
             System.out.println(indent + "- null");
             return;
         }
 
-        // Print current node
         System.out.println(indent + "- " + node.data);
 
-        // Recursive call for right subtree
         printTreeRecursive(node.right, indent + "   |");
 
-        // Recursive call for left subtree
         printTreeRecursive(node.left, indent + "   ");
     }
 }
 
-public class Main {
+public class TreeJava {
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
-
-        // Insert nodes into the binary tree
         tree.insert(50);
         tree.insert(30);
         tree.insert(20);
@@ -95,11 +77,9 @@ public class Main {
         tree.insert(60);
         tree.insert(80);
 
-        // Print the binary tree
         System.out.println("Binary Tree:");
         tree.printTree();
-        
-        // Calculate and print the height of the binary tree
+
         int height = tree.height();
         System.out.println("\nHeight of the binary tree: " + height);
     }
